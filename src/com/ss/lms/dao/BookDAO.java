@@ -25,7 +25,7 @@ public class BookDAO extends BaseDAO<Book> {
     }
 
     public void deleteBook(Book book) throws SQLException, ClassNotFoundException {
-        save("DELETE FROM tbl_book WHERE id = ?", new Object[] {book.getBookId()});
+        save("DELETE FROM tbl_book WHERE bookId = ?", new Object[] {book.getBookId()});
     }
 
     public List<Book> readBooks() throws SQLException, ClassNotFoundException {
@@ -33,11 +33,11 @@ public class BookDAO extends BaseDAO<Book> {
     }
 
     @Override
-    protected List<Book> extractData(ResultSet rs) throws SQLException, ClassNotFoundException {
+    protected List<Book> extractData(ResultSet rs) throws SQLException {
         List<Book> books = new ArrayList<>();
         while (rs.next()) {
             Book book = new Book();
-            book.setBookId(rs.getInt("id"));
+            book.setBookId(rs.getInt("bookId"));
             book.setTitle(rs.getString("title"));
             book.getPublisher().setPublisherId(rs.getInt("pubId"));
             books.add(book);

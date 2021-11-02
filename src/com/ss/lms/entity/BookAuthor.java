@@ -1,26 +1,37 @@
 package com.ss.lms.entity;
 
-import java.util.List;
+import java.util.Objects;
 
 public class BookAuthor {
-    private List<Book> books;
-    private List<Author> authors;
+    private Book book;
+    private Author author;
 
-    public List<Book> getBooks() {
-        return books;
+    public Book getBook() {
+        return book;
     }
 
-    public void setBooks(List<Book> books) {
-        this.books = books;
+    public void setBook(Book book) {
+        this.book = book;
     }
 
-    public List<Author> getAuthors() {
-        return authors;
+    public Author getAuthor() {
+        return author;
     }
 
-    public void setAuthors(List<Author> authors) {
-        this.authors = authors;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BookAuthor that = (BookAuthor) o;
+        return book.equals(that.book) && author.equals(that.author);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(book, author);
+    }
 }

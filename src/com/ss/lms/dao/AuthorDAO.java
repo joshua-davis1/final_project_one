@@ -19,8 +19,8 @@ public class AuthorDAO extends BaseDAO<Author> {
         List<Author> authors = new ArrayList<>();
         while (rs.next()) {
             Author author = new Author();
-            author.setAuthorId(rs.getInt("id"));
-            author.setAuthorName(rs.getString("AuthorName"));
+            author.setAuthorId(rs.getInt("authorId"));
+            author.setAuthorName(rs.getString("authorName"));
             authors.add(author);
         }
         return authors;
@@ -31,17 +31,17 @@ public class AuthorDAO extends BaseDAO<Author> {
     }
 
     public void addAuthor(Author auth) throws SQLException, ClassNotFoundException {
-        save("INSERT INTO tbl_author (name) VALUES (?)",
+        save("INSERT INTO tbl_author (authorName) VALUES (?)",
                 new Object[] {auth.getAuthorName()});
     }
 
     public void updateAuthor(Author auth) throws SQLException, ClassNotFoundException {
-        save("UPDATE tbl_author SET name = ? WHERE authId = ?",
+        save("UPDATE tbl_author SET authorName = ? WHERE authId = ?",
                 new Object[] {auth.getAuthorName(), auth.getAuthorId()});
     }
 
     public void deleteAuthor(Author auth) throws SQLException, ClassNotFoundException {
-        save("DELETE FROM tbl_author WHERE id = ?",
+        save("DELETE FROM tbl_author WHERE authorId = ?",
                 new Object[] {auth.getAuthorId()});
     }
 

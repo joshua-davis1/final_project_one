@@ -1,8 +1,12 @@
 package com.ss.lms.service;
 
+import com.ss.lms.dao.AuthorDAO;
+import com.ss.lms.dao.BookAuthorDAO;
 import com.ss.lms.dao.BookDAO;
 import com.ss.lms.dao.PublisherDAO;
+import com.ss.lms.entity.Author;
 import com.ss.lms.entity.Book;
+import com.ss.lms.entity.BookAuthor;
 import com.ss.lms.entity.Publisher;
 
 import java.sql.Connection;
@@ -40,6 +44,38 @@ public class AdminService {
         } catch (ClassNotFoundException | SQLException e) {
             if (conn != null) conn.rollback();
             return "Publisher failed to be added";
+        } finally {
+            if (conn != null) conn.close();
+        }
+    }
+
+    public String addAuthor(Author author) throws SQLException {
+        Connection conn = null;
+        try {
+            conn = connUtil.getConnection();
+            AuthorDAO adao = new AuthorDAO(conn);
+            adao.addAuthor(author);
+            conn.commit();
+            return "Author created successfully";
+        } catch (ClassNotFoundException | SQLException e) {
+            if (conn != null) conn.rollback();
+            return "Author failed to be created";
+        } finally {
+            if (conn != null) conn.close();
+        }
+    }
+
+    public String addBookAuthor(BookAuthor bookAuthor) throws SQLException {
+        Connection conn = null;
+        try {
+            conn = connUtil.getConnection();
+            BookAuthorDAO bdao = new BookAuthorDAO(conn);
+            bdao.addBookAuthor(bookAuthor);
+            conn.commit();
+            return "Author added successfully";
+        } catch (ClassNotFoundException | SQLException e) {
+            if (conn != null) conn.rollback();
+            return "Author failed to be added";
         } finally {
             if (conn != null) conn.close();
         }
