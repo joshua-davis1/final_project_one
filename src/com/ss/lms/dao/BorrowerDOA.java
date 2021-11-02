@@ -32,13 +32,13 @@ public class BorrowerDOA extends BaseDAO<Borrower> {
     }
 
     public void addBorrower(Borrower borrower) throws SQLException {
-        save("INSERT INTO tbl_borrower (cardNo, name, address, phone) VALUES (?, ?, ?, ?)",
-                new Object[] { borrower.getCardNo(), borrower.getName(), borrower.getAddress(), borrower.getPhone()});
+        save("INSERT INTO tbl_borrower (name, address, phone) VALUES (?, ?, ?)",
+                new Object[] { borrower.getName(), borrower.getAddress(), borrower.getPhone()});
     }
 
     public void updateBorrower(Borrower borrower) throws SQLException {
-        save("UPDATE tbl_borrower SET cardNo = ? AND name = ? AND address = ? AND phone = ? where cardNo = ?",
-                new Object[] { borrower.getCardNo(), borrower.getName(), borrower.getAddress(), borrower.getPhone(), borrower.getCardNo() });
+        save("UPDATE tbl_borrower SET name = ? AND address = ? AND phone = ? where cardNo = ?",
+                new Object[] { borrower.getName(), borrower.getAddress(), borrower.getPhone(), borrower.getCardNo() });
     }
 
     public void deleteBorrower(Borrower borrower) throws SQLException {
