@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class ConnectionUtil {
     public final String driver = "com.mysql.cj.jdbc.Driver";
     public final String url = "jdbc:mysql://localhost:3306/library";
-    public final String username = "root";
+    public final String username = "admin";
     public final String password = "123456";
 
     protected Connection getConnection() throws ClassNotFoundException, SQLException {
