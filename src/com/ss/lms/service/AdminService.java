@@ -1,6 +1,7 @@
 package com.ss.lms.service;
 
 import com.ss.lms.dao.BookDAO;
+import com.ss.lms.dao.PublisherDAO;
 import com.ss.lms.entity.Book;
 import com.ss.lms.entity.Publisher;
 
@@ -33,7 +34,7 @@ public class AdminService {
         try {
             conn = connUtil.getConnection();
             PublisherDAO pdao = new PublisherDAO(conn);
-            pdao.addBook(pub);
+            pdao.addPublisher(pub);
             conn.commit();
             return "Publisher added successfully";
         } catch (ClassNotFoundException | SQLException e) {
