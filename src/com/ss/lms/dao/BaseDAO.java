@@ -11,7 +11,7 @@ public abstract class BaseDAO<T> {
         this.conn = conn;
     }
 
-    protected void save(String sql, Object[] vals) throws SQLException, ClassNotFoundException {
+    protected void save(String sql, Object[] vals) throws SQLException {
         PreparedStatement pstmt = conn.prepareStatement(sql);
         if(vals!=null) {
             int ct = 1;
@@ -23,7 +23,7 @@ public abstract class BaseDAO<T> {
         pstmt.execute();
     }
 
-    protected Integer saveWithPK(String sql, Object[] vals) throws SQLException, ClassNotFoundException {
+    protected Integer saveWithPK(String sql, Object[] vals) throws SQLException {
         PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         if(vals!=null) {
             int ct = 1;
