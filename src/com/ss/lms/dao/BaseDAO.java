@@ -23,7 +23,7 @@ public abstract class BaseDAO<T> {
         pstmt.execute();
     }
 
-    protected Integer saveWithPK(String sql, Object[] vals) throws SQLException {
+    protected Integer saveWithPK(String sql, Object[] vals) throws SQLException, ClassNotFoundException {
         PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         if(vals!=null) {
             int ct = 1;
