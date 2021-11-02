@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class prat {
 
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+    public static void main(String[] args) throws SQLException {
         // 1. register driver
         // 2. create connection
         // 3. statement object

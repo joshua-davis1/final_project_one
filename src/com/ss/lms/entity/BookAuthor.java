@@ -2,7 +2,7 @@ package com.ss.lms.entity;
 
 import java.util.List;
 
-public class BookAuthors {
+public class BookAuthor {
     private List<Book> books;
     private List<Author> authors;
 

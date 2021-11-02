@@ -29,9 +29,8 @@ public class BookDAO extends BaseDAO<Book> {
     }
 
     public List<Book> readBooks() throws SQLException, ClassNotFoundException {
-        return read("SELECT * FROM tbl_books", null);
+        return read("SELECT * FROM tbl_book", null);
     }
-
 
     @Override
     protected List<Book> extractData(ResultSet rs) throws SQLException, ClassNotFoundException {

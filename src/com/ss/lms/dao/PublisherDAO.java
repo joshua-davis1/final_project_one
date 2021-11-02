@@ -1,6 +1,5 @@
 package com.ss.lms.dao;
 
-import com.ss.lms.entity.Book;
 import com.ss.lms.entity.Publisher;
 
 import java.sql.Connection;
