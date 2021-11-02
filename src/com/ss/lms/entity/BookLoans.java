@@ -1,5 +1,6 @@
 package com.ss.lms.entity;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -8,9 +9,9 @@ public class BookLoans {
     private Book book;
     private LibraryBranch libraryBranch;
     private Borrower borrower;
-    private LocalDateTime dateOut;
-    private LocalDateTime dateIn;
-    private LocalDateTime dueDate;
+    private Date dateOut;
+    private Date dateIn;
+    private Date dueDate;
 
     public Book getBook() {
         return book;
@@ -36,27 +37,27 @@ public class BookLoans {
         this.borrower = borrower;
     }
 
-    public LocalDateTime getDateOut() {
+    public Date getDateOut() {
         return dateOut;
     }
 
-    public void setDateOut(LocalDateTime dateOut) {
+    public void setDateOut(Date dateOut) {
         this.dateOut = dateOut;
     }
 
-    public LocalDateTime getDateIn() {
+    public Date getDateIn() {
         return dateIn;
     }
 
-    public void setDateIn(LocalDateTime dateIn) {
+    public void setDateIn(Date dateIn) {
         this.dateIn = dateIn;
     }
 
-    public LocalDateTime getDueDate() {
+    public Date getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(LocalDateTime dueDate) {
+    public void setDueDate(Date dueDate) {
         this.dueDate = dueDate;
     }
 
