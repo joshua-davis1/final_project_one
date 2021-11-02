@@ -1,13 +1,7 @@
 package com.ss.lms.service;
 
-import com.ss.lms.dao.AuthorDAO;
-import com.ss.lms.dao.BookAuthorDAO;
-import com.ss.lms.dao.BookDAO;
-import com.ss.lms.dao.PublisherDAO;
-import com.ss.lms.entity.Author;
-import com.ss.lms.entity.Book;
-import com.ss.lms.entity.BookAuthor;
-import com.ss.lms.entity.Publisher;
+import com.ss.lms.dao.*;
+import com.ss.lms.entity.*;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -76,6 +70,54 @@ public class AdminService {
         } catch (ClassNotFoundException | SQLException e) {
             if (conn != null) conn.rollback();
             return "Author failed to be added";
+        } finally {
+            if (conn != null) conn.close();
+        }
+    }
+
+    public String addLibraryBranch(LibraryBranch libraryBranch) throws SQLException {
+        Connection conn = null;
+        try {
+            conn = connUtil.getConnection();
+            LibraryBranchDAO ldao = new LibraryBranchDAO(conn);
+            ldao.addLibraryBranch(libraryBranch);
+            conn.commit();
+            return "library branch added successfully";
+        } catch (ClassNotFoundException | SQLException e) {
+            if (conn != null) conn.rollback();
+            return "library branch failed to be added";
+        } finally {
+            if (conn != null) conn.close();
+        }
+    }
+
+    public String setCopiesToBranch(BookCopies BookCopies) throws SQLException {
+        Connection conn = null;
+        try {
+            conn = connUtil.getConnection();
+            BookCopiesDAO bdao = new BookCopiesDAO(conn);
+            bdao.addBookCopies(BookCopies);
+            conn.commit();
+            return "Number of copies successfully updated";
+        } catch (ClassNotFoundException | SQLException e) {
+            if (conn != null) conn.rollback();
+            return "Failed to set number of copies";
+        } finally {
+            if (conn != null) conn.close();
+        }
+    }
+
+    public String addBorrower(Borrower borrower) throws SQLException {
+        Connection conn = null;
+        try {
+            conn = connUtil.getConnection();
+            BorrowerDOA bdao = new BorrowerDOA(conn);
+            bdao.addBorrower(borrower);
+            conn.commit();
+            return "Borrower successfully created";
+        } catch (ClassNotFoundException | SQLException e) {
+            if (conn != null) conn.rollback();
+            return "Failed to create borrower";
         } finally {
             if (conn != null) conn.close();
         }
