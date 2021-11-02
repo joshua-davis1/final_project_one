@@ -122,4 +122,20 @@ public class AdminService {
             if (conn != null) conn.close();
         }
     }
+
+    public String addBookLoan(BookLoans bookLoan) throws SQLException {
+        Connection conn = null;
+        try {
+            conn = connUtil.getConnection();
+            BookLoanDOA bdao = new BookLoanDOA(conn);
+            bdao.addBookLoans(bookLoan);
+            conn.commit();
+            return "Book loan successfully added";
+        } catch (ClassNotFoundException | SQLException e) {
+            if (conn != null) conn.rollback();
+            return "Failed to add book loan";
+        } finally {
+            if (conn != null) conn.close();
+        }
+    }
 }
