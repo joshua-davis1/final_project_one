@@ -138,4 +138,36 @@ public class AdminService {
             if (conn != null) conn.close();
         }
     }
+
+    public String addGenre(Genre genre) throws SQLException {
+        Connection conn = null;
+        try {
+            conn = connUtil.getConnection();
+            GenreDAO gdao = new GenreDAO(conn);
+            gdao.addGenre(genre);
+            conn.commit();
+            return "Genre successfully added.";
+        } catch (ClassNotFoundException | SQLException e) {
+            if (conn != null) conn.rollback();
+            return "Failed to add genre.";
+        } finally {
+            if (conn != null) conn.close();
+        }
+    }
+
+    public  String addBookGenre(BookGenre bookGenre) throws SQLException {
+        Connection conn = null;
+        try {
+            conn = connUtil.getConnection();
+            BookGenreDAO bgdao = new BookGenreDAO(conn);
+            bgdao.addBookGenre(bookGenre);
+            conn.commit();
+            return "Book genre successfully added.";
+        } catch (ClassNotFoundException | SQLException e) {
+            if (conn != null) conn.rollback();
+            return "Failed to add book genre.";
+        } finally {
+            if (conn != null) conn.close();
+        }
+    }
 }
