@@ -1,9 +1,13 @@
 package com.ss.lms.entity;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Borrower {
+public class Borrower implements Serializable {
 
+    @Serial
+    private static final long serialVersionUID = -3908160758734443260L;
     private int cardNo;
     private String name;
     private String address;

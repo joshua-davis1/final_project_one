@@ -1,8 +1,13 @@
 package com.ss.lms.entity;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class BookCopies {
+public class BookCopies implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1162402775898149242L;
     private Book book;
     private LibraryBranch libraryBranch;
     private int copies;

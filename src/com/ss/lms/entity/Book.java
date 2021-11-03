@@ -1,8 +1,13 @@
 package com.ss.lms.entity;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Book {
+public class Book implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = -6539899396924041709L;
     private int bookId;
     private String title;
     private Publisher publisher;

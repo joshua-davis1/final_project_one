@@ -1,9 +1,13 @@
 package com.ss.lms.entity;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Genre {
+public class Genre implements Serializable {
 
+    @Serial
+    private static final long serialVersionUID = -460177477894628347L;
     private int genreId;
     private String genreName;
 

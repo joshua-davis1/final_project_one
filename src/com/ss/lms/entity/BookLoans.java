@@ -1,11 +1,14 @@
 package com.ss.lms.entity;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.sql.Date;
-import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class BookLoans {
+public class BookLoans implements Serializable {
 
+    @Serial
+    private static final long serialVersionUID = -7684292087677569113L;
     private Book book;
     private LibraryBranch libraryBranch;
     private Borrower borrower;
