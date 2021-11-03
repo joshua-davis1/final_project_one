@@ -30,7 +30,7 @@ public class GenreDAO extends BaseDAO<Genre> {
     }
 
     public void addGenre(Genre genre) throws SQLException {
-        save("INSERT INTO tbl_genre (genreName) VALUES (?, )",
+        save("INSERT INTO tbl_genre (genreName) VALUES (?)",
                 new Object[] { genre.getGenreName() });
     }
 
