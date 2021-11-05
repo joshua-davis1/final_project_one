@@ -1,16 +1,22 @@
 package com.ss.lms.entity;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
 public class BookCopies implements Serializable {
 
-    @Serial
-    private static final long serialVersionUID = 1162402775898149242L;
     private Book book;
-    private LibraryBranch libraryBranch;
-    private int copies;
+    private Branch branch;
+    private int noOfCopies;
+
+    public BookCopies(Book book, Branch branch, int noOfCopies) {
+        this.book = book;
+        this.branch = branch;
+        this.noOfCopies = noOfCopies;
+    }
+
+    public BookCopies() {
+    }
 
     public Book getBook() {
         return book;
@@ -20,20 +26,20 @@ public class BookCopies implements Serializable {
         this.book = book;
     }
 
-    public LibraryBranch getLibraryBranch() {
-        return libraryBranch;
+    public Branch getBranch() {
+        return branch;
     }
 
-    public void setLibraryBranch(LibraryBranch libraryBranch) {
-        this.libraryBranch = libraryBranch;
+    public void setBranch(Branch branch) {
+        this.branch = branch;
     }
 
-    public int getCopies() {
-        return copies;
+    public int getNoOfCopies() {
+        return noOfCopies;
     }
 
-    public void setCopies(int copies) {
-        this.copies = copies;
+    public void setNoOfCopies(int noOfCopies) {
+        this.noOfCopies = noOfCopies;
     }
 
     @Override
@@ -41,11 +47,11 @@ public class BookCopies implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BookCopies that = (BookCopies) o;
-        return book.equals(that.book) && libraryBranch.equals(that.libraryBranch);
+        return book.equals(that.book) && branch.equals(that.branch);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(book, libraryBranch);
+        return Objects.hash(book, branch);
     }
 }

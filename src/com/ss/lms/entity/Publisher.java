@@ -13,6 +13,19 @@ public class Publisher implements Serializable {
     private String publisherAddress;
     private String publisherPhone;
 
+    public Publisher(int publisherId, String publisherName, String publisherAddress, String publisherPhone) {
+        this.publisherId = publisherId;
+        this.publisherName = publisherName;
+        this.publisherAddress = publisherAddress;
+        this.publisherPhone = publisherPhone;
+    }
+
+    public Publisher(int publisherId) {
+        this.publisherId = publisherId;
+    }
+
+    public Publisher() {}
+
     public int getPublisherId() {
         return publisherId;
     }

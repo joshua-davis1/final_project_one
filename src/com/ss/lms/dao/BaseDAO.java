@@ -3,12 +3,12 @@ package com.ss.lms.dao;
 import java.sql.*;
 import java.util.List;
 
-public abstract class BaseDAO<T> {
+public abstract  class BaseDAO<T> {
 
     protected static Connection conn = null;
 
     public BaseDAO(Connection conn) {
-        this.conn = conn;
+        BaseDAO.conn = conn;
     }
 
     protected void save(String sql, Object[] vals) throws SQLException {
@@ -20,10 +20,10 @@ public abstract class BaseDAO<T> {
                 ct++;
             }
         }
-        pstmt.execute();
+        pstmt.executeUpdate();
     }
 
-    protected Integer saveWithPK(String sql, Object[] vals) throws SQLException, ClassNotFoundException {
+    protected Integer saveReturnPK(String sql, Object[] vals) throws SQLException, ClassNotFoundException {
         PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         if(vals!=null) {
             int ct = 1;

@@ -1,6 +1,8 @@
 package com.ss.lms.dao;
 
+import com.ss.lms.entity.Author;
 import com.ss.lms.entity.Book;
+import com.ss.lms.entity.Publisher;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -29,7 +31,7 @@ public class BookDAO extends BaseDAO<Book> {
     }
 
     public List<Book> readBooks() throws SQLException, ClassNotFoundException {
-        return read("SELECT * FROM tbl_book", null);
+        return read("SELECT * FROM tbl_book join tbl_book_authors on tbl_book.bookId = tbl_book_authors.bookId join tbl_author on tbl_book_authors.authorId = tbl_author.authorId;", null);
     }
 
     @Override
@@ -37,9 +39,9 @@ public class BookDAO extends BaseDAO<Book> {
         List<Book> books = new ArrayList<>();
         while (rs.next()) {
             Book book = new Book();
+            book.setPublisher(new Publisher(rs.getInt("pubId")));
             book.setBookId(rs.getInt("bookId"));
             book.setTitle(rs.getString("title"));
-            book.getPublisher().setPublisherId(rs.getInt("pubId"));
             books.add(book);
         }
         return books;

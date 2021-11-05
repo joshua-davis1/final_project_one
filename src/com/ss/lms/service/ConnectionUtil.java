@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionUtil {
+
     public final String driver = "com.mysql.cj.jdbc.Driver";
     public final String url = "jdbc:mysql://localhost:3306/library";
     public final String username = "admin";

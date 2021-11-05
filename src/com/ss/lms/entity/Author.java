@@ -7,10 +7,17 @@ import java.util.Objects;
 public class Author implements Serializable {
 
     @Serial
-    private static final long serialVersionUID = 123078424685029193L;
-
+    private static final long serialVersionUID = 2900274492016060965L;
     private int authorId;
     private String authorName;
+
+    public Author(int authorId, String authorName) {
+        this.authorId = authorId;
+        this.authorName = authorName;
+    }
+
+    public Author() {
+    }
 
     public int getAuthorId() {
         return authorId;

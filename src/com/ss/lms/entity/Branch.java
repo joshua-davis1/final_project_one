@@ -2,15 +2,40 @@ package com.ss.lms.entity;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-public class LibraryBranch implements Serializable {
+public class Branch implements Serializable {
 
     @Serial
-    private static final long serialVersionUID = 7000473763414609574L;
+    private static final long serialVersionUID = -8618072017683024590L;
     private int branchId;
     private String branchName;
     private String branchAddress;
+    private List<BookCopies> inventory = new ArrayList<>();
+
+    public Branch(int branchId, String branchName, String branchAddress) {
+        this.branchId = branchId;
+        this.branchName = branchName;
+        this.branchAddress = branchAddress;
+    }
+
+    public Branch(int branchId) {
+        this.branchId = branchId;
+    }
+
+    public void addInventory(BookCopies stock) {
+        inventory.add(stock);
+    }
+
+    public List<BookCopies> getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(List<BookCopies> inventory) {
+        this.inventory = inventory;
+    }
 
     public int getBranchId() {
         return branchId;
@@ -40,8 +65,8 @@ public class LibraryBranch implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        LibraryBranch that = (LibraryBranch) o;
-        return branchId == that.branchId;
+        Branch branch = (Branch) o;
+        return branchId == branch.branchId;
     }
 
     @Override

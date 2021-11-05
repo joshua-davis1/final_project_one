@@ -18,9 +18,7 @@ public class AuthorDAO extends BaseDAO<Author> {
     protected List<Author> extractData(ResultSet rs) throws SQLException, ClassNotFoundException {
         List<Author> authors = new ArrayList<>();
         while (rs.next()) {
-            Author author = new Author();
-            author.setAuthorId(rs.getInt("authorId"));
-            author.setAuthorName(rs.getString("authorName"));
+            Author author = new Author(rs.getInt("authorId"), rs.getString("authorName"));
             authors.add(author);
         }
         return authors;
