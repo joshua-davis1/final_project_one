@@ -12,6 +12,11 @@ import java.util.stream.Collectors;
 public class App {
     private AdminService adminService = new AdminService();
 
+    /*
+    * TODO: - add View package
+    *       - move Views into their own classes
+    * */
+
     public static void main(String[] args) throws SQLException {
         App app = new App();
         // populated list
