@@ -1,6 +1,7 @@
 package com.ss.lms.service;
 
 public class AdminService {
+
     ConnectionUtil connUtil = new ConnectionUtil();
 
     private final AuthorService authorService = new AuthorService(connUtil);
@@ -8,6 +9,16 @@ public class AdminService {
     private final BookService bookService = new BookService(connUtil);
     private final BranchService branchService = new BranchService(connUtil);
     private final PublisherService publisherService = new PublisherService(connUtil);
+    private final BorrowerService borrowerService = new BorrowerService(connUtil);
+    private final BookLoansService bookLoansService = new BookLoansService(connUtil);
+
+    public BookLoansService getBookLoansService() {
+        return bookLoansService;
+    }
+
+    public BorrowerService getBorrowerService() {
+        return borrowerService;
+    }
 
     public BookCopiesService getBookCopiesService() {
         return bookCopiesService;
