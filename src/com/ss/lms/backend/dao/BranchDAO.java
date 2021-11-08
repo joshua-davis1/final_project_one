@@ -18,11 +18,26 @@ public class BranchDAO extends BaseDAO<Branch> {
         return read("SELECT * FROM tbl_library_branch", null);
     }
 
+    public void addBranch(String name, String address) throws SQLException {
+        save("INSERT INTO tbl_library_branch(name, address) VALUES(?, ?)",
+                new Object[] {
+                        name,
+                        address
+                });
+    }
+
     public void updateBranch(Branch branch) throws SQLException {
         save("UPDATE tbl_library_branch SET branchName = ?, branchAddress = ? WHERE branchId = ?",
                 new Object[] {
                         branch.getName(),
                         branch.getAddress(),
+                        branch.getId()
+                });
+    }
+
+    public void deleteBranch(Branch branch) throws SQLException {
+        save("DELETE FROM tbl_library_branch WHERE branchId = ?",
+                new Object[] {
                         branch.getId()
                 });
     }

@@ -18,12 +18,29 @@ public class StockDOA extends BaseDAO<Stock> {
         return read("SELECT * FROM tbl_book_copies", null);
     }
 
+    public void addStock(Stock stock) throws SQLException {
+        save("INSERT INTO tbl_book_copies(bookId, branchId, noOfCopies) VALUES(?, ?, ?)",
+                new Object[] {
+                        stock.getBook().getId(),
+                        stock.getBranchId(),
+                        stock.getQuantity()
+                });
+    }
+
     public void updateStockQty(Stock stock) throws SQLException {
         save("UPDATE tbl_book_copies SET noOfCopies = ? WHERE bookId = ? AND branchId = ?", new Object[] {
                 stock.getQuantity(),
                 stock.getBook().getId(),
                 stock.getBranchId()
         });
+    }
+
+    public void deleteStock(Stock stock) throws SQLException {
+        save("DELETE FROM tbl_book_copies WHERE bookId = ? AND branchId = ?",
+                new Object[] {
+                        stock.getBook().getId(),
+                        stock.getBranchId()
+                });
     }
 
     @Override

@@ -45,6 +45,15 @@ public class LoanDAO extends BaseDAO<Loan> {
                 });
     }
 
+    public void deleteLoan(Loan loan) throws SQLException {
+        save("DELETE FROM tbl_book_loans WHERE bookId = ? AND branchId = ? and cardNo = ?",
+                new Object[] {
+                        loan.getBookId(),
+                        loan.getBranchId(),
+                        loan.getBorrower().getCardNo()
+                });
+    }
+
     public Boolean loanExist(Loan loan) throws SQLException, ClassNotFoundException {
         return !(read("SELECT * FROM tbl_book_loans as lo join tbl_borrower as bo on bo.cardNo=lo.cardNo WHERE lo.bookId = ? AND lo.branchId = ? AND lo.cardNo = ?",
                 new Object[] {

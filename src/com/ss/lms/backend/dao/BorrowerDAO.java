@@ -1,8 +1,6 @@
 package com.ss.lms.backend.dao;
 
-import com.ss.lms.backend.entity.Book;
 import com.ss.lms.backend.entity.Borrower;
-import com.ss.lms.backend.entity.Publisher;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -11,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BorrowerDAO extends BaseDAO<Borrower> {
+
     public BorrowerDAO(Connection conn) {
         super(conn);
     }
@@ -18,6 +17,30 @@ public class BorrowerDAO extends BaseDAO<Borrower> {
     public List<Borrower> readBorrowers() throws SQLException, ClassNotFoundException {
         // Borrower
         return read("SELECT * FROM tbl_borrower", null);
+    }
+
+    public void addBorrower(String name, String address, String phone) throws SQLException {
+        save("INSERT INTO tbl_borrower(name, address, phone) VALUES(?, ?, ?)",
+                new Object[] {
+                        name,
+                        address,
+                        phone
+                });
+    }
+
+    public void updateBorrower(Borrower borrower) throws SQLException {
+        save("INSERT INTO tbl_borrower SET name = ?, address = ?, phone = ? WHERE cardNo = ?",
+                new Object[] {
+                        borrower.getName(),
+                        borrower.getAddress(),
+                        borrower.getPhone(),
+                        borrower.getCardNo()
+                });
+    }
+
+    public void deleteBorrower(Borrower borrower) throws SQLException {
+        save("DELETE FROM tbl_borrower WHERE cardNo = ?",
+                new Object[] {borrower.getCardNo()});
     }
 
     public Borrower getBorrowerByCardNo(int cardNo) throws SQLException, ClassNotFoundException {

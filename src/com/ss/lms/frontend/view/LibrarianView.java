@@ -91,13 +91,14 @@ public class LibrarianView extends View {
             printMessages(updateMessageOne, false,false);
             if(scanner.hasNextLine()) strInput.append(scanner.nextLine());
             if (stringIsQuit(strInput.toString())) break;
-            if (!stringIsNA(strInput.toString())) branch.setName(strInput.toString());
+            if (!stringIsNA(strInput.toString()) && strInput.length() != 0) branch.setName(strInput.toString());
             clearStrBuff();
             printMessages(updateMessageTwo, false, false);
             if(scanner.hasNextLine()) strInput.append(scanner.nextLine());
             if (stringIsQuit(strInput.toString())) break;
-            if (!stringIsNA(strInput.toString())) branch.setAddress(strInput.toString());
+            if (!stringIsNA(strInput.toString()) && strInput.length() != 0) branch.setAddress(strInput.toString());
             clearStrBuff();
+            System.out.println(branch);
             adminController.updateBranch(branch);
             printMessages(updateMessageThree, false, false);
             break;

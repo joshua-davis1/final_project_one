@@ -2,6 +2,7 @@ package com.ss.lms.backend.dao;
 
 import com.ss.lms.backend.entity.BookAuthor;
 
+import java.awt.print.Book;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,6 +16,22 @@ public class BookAuthorDAO extends BaseDAO<BookAuthor> {
 
     public List<BookAuthor> readBookAuthor() throws SQLException, ClassNotFoundException {
         return read("SELECT * FROM tbl_book_authors", null);
+    }
+
+    public void addBookAuthor(BookAuthor bookAuthor) throws SQLException {
+        save("INSERT INTO tbl_book_authors(bookId, authorId) VALUES(?,?)",
+                new Object[]{
+                        bookAuthor.getBookId(),
+                        bookAuthor.getAuthorId()
+                });
+    }
+
+    public void deleteBookAuthor(BookAuthor bookAuthor) throws SQLException {
+        save("DELETE FROM tbl_book_authors WHERE bookId = ? AND authorId = ?",
+                new Object[] {
+                        bookAuthor.getBookId(),
+                        bookAuthor.getAuthorId()
+                });
     }
 
     @Override

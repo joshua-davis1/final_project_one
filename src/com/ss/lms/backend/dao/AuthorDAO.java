@@ -14,6 +14,30 @@ public class AuthorDAO extends BaseDAO <Author> {
         super(conn);
     }
 
+    public List<Author> readAuthors() throws SQLException, ClassNotFoundException {
+        // Author + bookId
+        return read("SELECT * FROM tbl_author",
+                null);
+    }
+
+    public void addAuthor(String authorName) throws SQLException {
+        save("INSERT INTO tbl_author(authorName) VALUES(?)",
+                new Object[]{authorName});
+    }
+
+    public void updateAuthor(Author author) throws SQLException {
+        save("UPDATE tbl_author SET authorName = ? WHERE authorId = ?",
+                new Object[] {
+                        author.getName(),
+                        author.getId()
+                });
+    }
+
+    public void deleteAuthor(Author author) throws SQLException {
+        save("DELETE FROM tbl_author WHERE authorId = ?",
+                new Object[] {author.getId()});
+    }
+
     @Override
     protected List<Author> extractData(ResultSet rs) throws SQLException {
         List<Author> authors = new ArrayList<>();
@@ -24,11 +48,5 @@ public class AuthorDAO extends BaseDAO <Author> {
             authors.add(author);
         }
         return authors;
-    }
-
-    public List<Author> readAuthors() throws SQLException, ClassNotFoundException {
-        // Author + bookId
-        return read("SELECT * FROM tbl_author",
-                null);
     }
 }

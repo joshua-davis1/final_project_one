@@ -20,6 +20,28 @@ public class BookDAO extends BaseDAO<Book> {
         return read("SELECT * FROM tbl_book as b join tbl_publisher as p on p.publisherId = b.pubId;", null);
     }
 
+    public void addBook(String title, int pubId) throws SQLException {
+        save("INSERT INTO tbl_book(title, pubId) VALUES(? , ?)",
+                new Object[] {
+                        title,
+                        pubId
+                });
+    }
+
+    public void updateBook(Book book) throws SQLException {
+        save("UPDATE tbl_book SET title = ?, pubId = ? WHERE bookId = ?",
+                new Object[] {
+                        book.getTitle(),
+                        book.getPublisher().getId(),
+                        book.getId()
+                });
+    }
+
+    public void deleteBook(Book book) throws SQLException {
+        save("DELETE FROM tbl_book WHERE bookId = ?",
+                new Object[] {book.getId()});
+    }
+
     @Override
     protected List<Book> extractData(ResultSet rs) throws SQLException {
         List<Book> books = new ArrayList<>();
