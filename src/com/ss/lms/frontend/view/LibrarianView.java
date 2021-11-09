@@ -98,7 +98,6 @@ public class LibrarianView extends View {
             if (stringIsQuit(strInput.toString())) break;
             if (!stringIsNA(strInput.toString()) && strInput.length() != 0) branch.setAddress(strInput.toString());
             clearStrBuff();
-            System.out.println(branch);
             adminController.updateBranch(branch);
             printMessages(updateMessageThree, false, false);
             break;

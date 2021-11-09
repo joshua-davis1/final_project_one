@@ -6,9 +6,9 @@ import java.util.List;
 public class MainView extends View {
 
     // Views
-    private AdminView adminView = new AdminView();
-    private BorrowerView borrowerView = new BorrowerView();
-    private LibrarianView librarianView = new LibrarianView();
+    private final AdminView adminView = new AdminView();
+    private final BorrowerView borrowerView = new BorrowerView();
+    private final LibrarianView librarianView = new LibrarianView();
 
 
     // Constants
@@ -24,15 +24,9 @@ public class MainView extends View {
             // validate and save user response
             input = valIntInputLimit(3);
             switch (input) {
-                case 1:
-                    librarianView.run();
-                    break;
-                case 2:
-                    adminView.run();
-                    break;
-                case 3:
-                    borrowerView.run();
-                    break;
+                case 1 -> librarianView.run();
+                case 2 -> adminView.run();
+                case 3 -> borrowerView.run();
             }
         }
     }

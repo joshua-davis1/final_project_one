@@ -31,18 +31,13 @@ public class BranchService {
     }
 
     public List<Branch> getBranches() throws SQLException {
-        Connection conn = null;
         List<Branch> branches = new ArrayList<>();
-        try {
-            conn = connUtil.getConnection();
+        try(Connection conn =connUtil.getConnection()) {
             BranchDAO branchDAO = new BranchDAO(conn);
             branches = branchDAO.readBranches();
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("sql error: getBranches");
             e.printStackTrace();
-            if (conn != null) conn.rollback();
-        } finally {
-            if (conn != null) conn.close();
         }
         return branches;
     }
